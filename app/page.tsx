@@ -14,9 +14,7 @@ export default function Home() {
         </div>
         <div className="wrap-balance font-inter text-sm md:text-base">
           I'm currently building{" "}
-          <Link
-            href="/"
-            className="hover:underline text-[#7F7E7E] dark:text-[#a5a5a5]">
+          <Link href="/" className="hover:underline">
             Waveroom
           </Link>
         </div>

@@ -27,16 +27,14 @@ export default function Navbar() {
       </div>
       <div className="flex flex-row gap-4 items-center text-foreground">
         <div className="flex flex-row gap-4">
-          <Link href="/post">
-            <div className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-              Post
-            </div>
+          <Link
+            href="/posts"
+            className="cursor-pointer hover:underline font-inter text-sm md:text-base">
+            Post
           </Link>
-          <Link href="/email">
-            <div className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-              Email
-            </div>
-          </Link>
+          <div className="cursor-pointer hover:underline font-inter text-sm md:text-base">
+            Email
+          </div>
           <Link href="/me&stuffs">
             <div className="cursor-pointer hover:underline font-inter text-sm md:text-base">
               me & stuffs
