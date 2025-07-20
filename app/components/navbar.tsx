@@ -49,7 +49,7 @@ export default function Navbar() {
             <ScrambleHover text="Email" />
           </Link>
           <Link
-            href="/me&stuffs"
+            href="/Me&stuffs"
             className="cursor-pointer hover:underline font-inter text-sm md:text-base">
             <ScrambleHover text="me & stuffs" />
           </Link>

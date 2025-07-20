@@ -13,7 +13,9 @@ export default function Home() {
         </div>
         <div className="wrap-balance font-inter text-sm md:text-base">
           I&apos;m currently building{" "}
-          <Link href="/" className="hover:underline">
+          <Link
+            href="https://github.com/Hendo10X/waveroom"
+            className="underline text-grey-500">
             Waveroom
           </Link>
         </div>
