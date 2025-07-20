@@ -49,9 +49,9 @@ export default function Navbar() {
             <ScrambleHover text="Email" />
           </Link>
           <Link
-            href="/Me&stuffs"
+            href="/me&stuffs"
             className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-            <ScrambleHover text="me & stuffs" />
+            <ScrambleHover text="Me & stuffs" />
           </Link>
         </div>
 
