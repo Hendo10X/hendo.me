@@ -1,4 +1,8 @@
-# Hello World
+---
+title: Hello World
+date: July 19, 2024
+minute read: 3 min read
+---
 
 This is my first blog post written in markdown.
 
@@ -25,7 +29,3 @@ function Greeting({ name }) {
 ## Conclusion
 
 Stay tuned for more posts about my journey in tech!
-
----
-
-_Published on July 19, 2024_

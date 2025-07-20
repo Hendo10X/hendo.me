@@ -1,8 +1,8 @@
-# Essential Web Development Tips
-
-Some key insights I've learned while building web applications.
-
-## Performance Matters
+---
+title: Essential Web Development Tips
+date: July 19, 2024
+minute read: 3 min read
+---
 
 Web performance is crucial for user experience. Here are some tips:
 

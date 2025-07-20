@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import ScrambleHover from "@/components/ui/scramble-hover";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -7,6 +8,16 @@ export default function Navbar() {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -20,8 +31,8 @@ export default function Navbar() {
         <div className="flex flex-row gap-4">
           <Link
             href="/"
-            className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-            /boihendo
+            className="text-muted-foreground cursor-pointer font-inter text-sm md:text-base">
+            <ScrambleHover text="boihendo" />
           </Link>
         </div>
       </div>
@@ -30,15 +41,17 @@ export default function Navbar() {
           <Link
             href="/posts"
             className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-            Post
+            <ScrambleHover text="Post" />
           </Link>
-          <div className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-            Email
-          </div>
-          <Link href="/me&stuffs">
-            <div className="cursor-pointer hover:underline font-inter text-sm md:text-base">
-              me & stuffs
-            </div>
+          <Link
+            href="mailto:hendersondike@gmail.com"
+            className="cursor-pointer hover:underline font-inter text-sm md:text-base">
+            <ScrambleHover text="Email" />
+          </Link>
+          <Link
+            href="/me&stuffs"
+            className="cursor-pointer hover:underline font-inter text-sm md:text-base">
+            <ScrambleHover text="me & stuffs" />
           </Link>
         </div>
 

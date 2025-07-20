@@ -6,34 +6,30 @@ export default function PostsPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <header className="mb-8">
-          <h1 className="text-md font-bold mb-4 font-inter">Posts</h1>
-          <p className="text-muted-foreground font-inter">
-            my unsolicited and funny thoughts on everything!
-          </p>
+      <div className="w-full max-w-md sm:max-w-2xl mx-auto px-4 py-8">
+        <header className="mb-4">
+          <h1 className="text-md md:text-lg font-bold mb-4 font-inter">blog</h1>
         </header>
-
-        <div className="space-y-3">
+        <div className="divide-y divide-border">
           {posts.length === 0 ? (
             <p className="text-muted-foreground font-inter">No posts yet.</p>
           ) : (
             posts.map((post) => (
-              <article
-                key={post.slug}
-                className="border-b border-border pb-3 last:border-b-0">
-                <Link
-                  href={`/posts/${post.slug}`}
-                  className="block group hover:no-underline">
-                  <h2 className="text-sm font-inter transition-colors">
+              <article key={post.slug} className="py-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
+                  <Link
+                    href={`/posts/${post.slug}`}
+                    className="text-sm md:text-base font-inter transition-colors">
                     {post.title}
-                  </h2>
-                  {post.date && (
-                    <p className="text-muted-foreground text-xs font-inter">
-                      {post.date}
-                    </p>
-                  )}
-                </Link>
+                  </Link>
+                  <div className="flex items-center gap-2 sm:justify-end">
+                    {post.date && (
+                      <span className="text-muted-foreground text-xs md:text-sm font-inter whitespace-nowrap">
+                        {post.date}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </article>
             ))
           )}
