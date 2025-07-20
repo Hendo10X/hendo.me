@@ -6,7 +6,7 @@ export default function MeAndStuffsPage() {
           coming soon...
         </h1>
         <p className="text-sm md:text-sm text-muted-foreground font-inter">
-          I'm still working on this page.
+          Here&apos;s my stuff
         </p>
       </div>
     </div>

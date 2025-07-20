@@ -1,4 +1,3 @@
-import ScrambleHover from "@/components/ui/scramble-hover";
 import Link from "next/link";
 
 export default function Home() {
@@ -13,10 +12,8 @@ export default function Home() {
           I write clean and scalable and, design conscious software.
         </div>
         <div className="wrap-balance font-inter text-sm md:text-base">
-          I'm currently building{" "}
-          <Link
-            href="https://github.com/Hendo10X/waveroom"
-            className="hover:underline">
+          I&apos;m currently building{" "}
+          <Link href="/" className="hover:underline">
             Waveroom
           </Link>
         </div>
