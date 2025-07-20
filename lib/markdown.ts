@@ -97,7 +97,7 @@ export function parseMarkdown(markdown: string): {
       }
       const listItem = line.substring(2);
       // Process the list item content for bold, italic, etc.
-      let processedItem = listItem
+      const processedItem = listItem
         .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold">$1</strong>')
         .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
         .replace(
@@ -117,15 +117,15 @@ export function parseMarkdown(markdown: string): {
 
     // Headers
     if (line.startsWith("## ")) {
-      htmlLine = `<h2 class="text-md font-bold mt-8 mb-4 text-foreground">${line.substring(
+      htmlLine = `<h2 class="text-2xl font-bold mt-8 mb-4 text-foreground">${line.substring(
         3
       )}</h2>`;
     } else if (line.startsWith("### ")) {
-      htmlLine = `<h3 class="text-md font-semibold mt-6 mb-3 text-foreground">${line.substring(
+      htmlLine = `<h3 class="text-xl font-semibold mt-6 mb-3 text-foreground">${line.substring(
         4
       )}</h3>`;
     } else if (line.startsWith("#### ")) {
-      htmlLine = `<h4 class="text-md font-semibold mt-4 mb-2 text-foreground">${line.substring(
+      htmlLine = `<h4 class="text-lg font-semibold mt-4 mb-2 text-foreground">${line.substring(
         5
       )}</h4>`;
     }
@@ -196,7 +196,7 @@ export function getPost(slug: string): Post | null {
       date,
       readingTime,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -223,7 +223,7 @@ export function getAllPosts(): Post[] {
       }
       return 0;
     });
-  } catch (error) {
+  } catch {
     return [];
   }
 }
