@@ -16,7 +16,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center w-full gap-16 px-4 py-16">
       <div className="w-full max-w-md sm:max-w-2xl mx-auto px-4 py-8">
         <article className="font-inter">
           <header className="mb-8">
