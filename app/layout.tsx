@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import { ThemeProvider } from "next-themes";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,6 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Script
+        async
+        src="https://cdn.seline.com/seline.js"
+        data-token="07d32b34cee4012"
+        strategy="afterInteractive"
+      />
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
