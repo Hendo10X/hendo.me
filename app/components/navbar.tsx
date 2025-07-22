@@ -53,6 +53,7 @@ export default function Navbar() {
             className="cursor-pointer hover:underline font-inter text-sm md:text-base">
             <ScrambleHover text="Me & stuffs" />
           </Link>
+    
         </div>
 
         <div className="fixed bottom-4 right-4 z-50">
