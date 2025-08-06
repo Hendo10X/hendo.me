@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
@@ -32,7 +32,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
-  const [revealedIndices, setRevealedIndices] = useState(new Set<number>());
+  const revealedIndicesRef = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -40,6 +40,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
 
     const getNextIndex = () => {
       const textLength = text.length;
+      const revealedIndices = revealedIndicesRef.current;
       switch (revealDirection) {
         case "start":
           return revealedIndices.size;
@@ -71,6 +72,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     };
 
     const shuffleText = (text: string) => {
+      const revealedIndices = revealedIndicesRef.current;
       if (useOriginalCharsOnly) {
         const positions = text.split("").map((char, i) => ({
           char,
@@ -122,13 +124,9 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
       setIsScrambling(true);
       interval = setInterval(() => {
         if (sequential) {
-          if (revealedIndices.size < text.length) {
+          if (revealedIndicesRef.current.size < text.length) {
             const nextIndex = getNextIndex();
-            setRevealedIndices((prev) => {
-              const newSet = new Set(prev);
-              newSet.add(nextIndex);
-              return newSet;
-            });
+            revealedIndicesRef.current.add(nextIndex);
             setDisplayText(shuffleText(text));
           } else {
             clearInterval(interval);
@@ -146,7 +144,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
       }, scrambleSpeed);
     } else {
       setDisplayText(text);
-      setRevealedIndices(new Set<number>());
+      revealedIndicesRef.current.clear();
     }
 
     return () => {
@@ -161,7 +159,6 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     sequential,
     revealDirection,
     maxIterations,
-    revealedIndices,
   ]);
 
   return (
@@ -176,7 +173,9 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
           <span
             key={index}
             className={cn(
-              revealedIndices.has(index) || !isScrambling || !isHovering
+              revealedIndicesRef.current.has(index) ||
+                !isScrambling ||
+                !isHovering
                 ? className
                 : scrambledClassName
             )}>
