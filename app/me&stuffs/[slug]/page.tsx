@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import ToolsIUse from "../components/ToolsIUse";
-import BooksIReadRecommended from "../components/Books";
-import Projects from "../components/Projects";
+import Books from "../components/Books";
+import Gallery from "../components/Gallery";
 
 interface SlugPageProps {
   params: Promise<{
@@ -15,8 +15,8 @@ export default async function SlugPage({ params }: SlugPageProps) {
   // Map slugs to components
   const componentMap: { [key: string]: React.ComponentType } = {
     "tools-i-use": ToolsIUse,
-    "books-i-read-recommended": BooksIReadRecommended,
-    projects: Projects,
+    "books-i-read-recommended": Books,
+    "gallery-of-my-stuffs": Gallery,
   };
 
   const Component = componentMap[slug];
