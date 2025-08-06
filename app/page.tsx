@@ -6,8 +6,8 @@ export default function Home() {
     <div className="w-dvw h-[calc(100dvh-41px)] flex flex-row items-center justify-center">
       <div className="flex flex-col w-full gap-4 px-4 max-w-xs sm:w-80 wrap-balance">
         <div className="font-inter text-sm md:text-base">
-          Hello World, I am Hendo. Software developer and Interface designer and
-          sometimes I love tinkering with Game development.
+          Hello World, I am Hendo. Software developer and Interface designer.
+          Sometimes I love tinkering with Game development.
         </div>
         <div className="wrap-balance font-inter text-sm md:text-base">
           I write clean and scalable and, design conscious software.
