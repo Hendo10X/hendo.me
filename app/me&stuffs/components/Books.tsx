@@ -5,7 +5,7 @@ export default function Books() {
         <div className="font-inter">
           <header className="mb-8">
             <h1 className="text-xl md:text-2xl font-bold mb-4 text-foreground">
-              Books I Read & Recommended
+              Books I Read and Recommend
             </h1>
             <p className="text-muted-foreground text-sm md:text-base">
               Here are some books I&apos;ve read and would recommend
