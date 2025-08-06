@@ -21,7 +21,7 @@ export default function MeAndStuffsPage() {
             <Link
               href="/me&stuffs/books-i-read-recommended"
               className="text-sm md:text-base font-inter">
-              Books I read recommended
+              Books I read and recommend
             </Link>
           </div>
 
