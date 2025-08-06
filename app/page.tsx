@@ -1,4 +1,9 @@
-import ScrambleHover from "@/components/ui/scramble-hover";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  Github01Icon,
+  ThreadsIcon,
+  TwitterIcon,
+} from "@hugeicons/core-free-icons";
 import Link from "next/link";
 
 export default function Home() {
@@ -24,21 +29,21 @@ export default function Home() {
               <Link
                 href="https://github.com/Hendo10X"
                 className="cursor-pointer hover:underline text-muted-foreground">
-                <ScrambleHover text="GitHub" />
+                <HugeiconsIcon icon={Github01Icon} size={19} />
               </Link>
             </div>
             <div className="text-xs md:text-base">
               <Link
                 href="https://www.threads.com/@boi_hendo"
                 className="cursor-pointer hover:underline text-muted-foreground">
-                <ScrambleHover text="Threads" />
+                <HugeiconsIcon icon={ThreadsIcon} size={19} />
               </Link>
             </div>
             <div className="flex flex-row gap-2 text-xs md:text-base">
               <Link
                 href="https://x.com/boihendo"
                 className="cursor-pointer hover:underline text-muted-foreground">
-                <ScrambleHover text="X" />
+                <HugeiconsIcon icon={TwitterIcon} size={19} />
               </Link>
             </div>
           </div>

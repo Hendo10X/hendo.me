@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
+import BreadcrumbNav from "@/components/ui/breadcrumb-nav";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
+          <BreadcrumbNav />
           {children}
         </ThemeProvider>
       </body>

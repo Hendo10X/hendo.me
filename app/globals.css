@@ -115,12 +115,17 @@
 .font-inter {
   font-family: var(--font-inter);
 }
-
+.font-dm-mono {
+  font-family: var(--font-dm-mono);
+}
 .prose {
   font-family: var(--font-inter), sans-serif;
   color: var(--foreground);
 }
-.prose h1, .prose h2, .prose h3, .prose h4 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
   font-family: var(--font-inter), sans-serif;
   font-weight: 700;
 }
