@@ -73,8 +73,8 @@ export default function ToolsIUse() {
                   icon={NoteAddIcon}
                   size={19}
                 />
-                Notepad - I use it to jot down thoughts, i don't fw notion and
-                the likes
+                Notepad - I use it to jot down thoughts, i don&apos;t fw notion
+                and the likes
               </li>
             </ol>
 
@@ -120,7 +120,7 @@ export default function ToolsIUse() {
                   icon={DatabaseIcon}
                   size={19}
                 />
-                Postgres-SQL - Database (I'm currently using Drizzle ORM)
+                Postgres-SQL - Database (I&apos;m currently using Drizzle ORM)
               </li>
             </ol>
 
