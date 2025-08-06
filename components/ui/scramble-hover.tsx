@@ -32,7 +32,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
-  const [revealedIndices, _setRevealedIndices] = useState(new Set<number>());
+  const [revealedIndices, setRevealedIndices] = useState(new Set<number>());
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -124,7 +124,11 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
         if (sequential) {
           if (revealedIndices.size < text.length) {
             const nextIndex = getNextIndex();
-            revealedIndices.add(nextIndex);
+            setRevealedIndices((prev) => {
+              const newSet = new Set(prev);
+              newSet.add(nextIndex);
+              return newSet;
+            });
             setDisplayText(shuffleText(text));
           } else {
             clearInterval(interval);
@@ -142,7 +146,7 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
       }, scrambleSpeed);
     } else {
       setDisplayText(text);
-      revealedIndices.clear();
+      setRevealedIndices(new Set<number>());
     }
 
     return () => {

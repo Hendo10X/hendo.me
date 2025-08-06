@@ -10,9 +10,9 @@ export default function Research() {
             <p className="text-muted-foreground text-sm md:text-base font-light max-w-2xl">
               My first ever thesis on the topic of{" "}
               <span className="uppercase font-dm-mono">
-                "The development and construction of DC electromagnet with a
-                variable output and display for the investigation of the
-                corrosion of the materials"
+                &quot;The development and construction of DC electromagnet with
+                a variable output and display for the investigation of the
+                corrosion of the materials&quot;
               </span>
             </p>
           </header>
