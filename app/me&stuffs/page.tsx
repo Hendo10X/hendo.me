@@ -24,7 +24,20 @@ export default function MeAndStuffsPage() {
               Books I read and recommend
             </Link>
           </div>
-
+          <div className="py-2">
+            <Link
+              href="/me&stuffs/research-papers"
+              className="text-sm md:text-base font-inter">
+              Research Papers
+            </Link>
+          </div>
+          <div className="py-2">
+            <Link
+              href="/me&stuffs/designs-and-code"
+              className="text-sm md:text-base font-inter">
+              Designs and Code
+            </Link>
+          </div>
           <div className="py-2">
             <Link
               href="/me&stuffs/gallery-of-my-stuffs"
