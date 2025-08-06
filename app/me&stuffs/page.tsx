@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function MeAndStuffsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="w-full max-w-xs sm:max-w-2xl mx-auto px-4 py-8">
+      <div className="w-full max-w-sm sm:max-w-2xl mx-auto px-4 py-8">
         <header className="mb-4">
           <h1 className="text-md md:text-lg font-bold mb-4 font-inter">
             Me and my stuffs
