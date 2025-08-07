@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Synxdown",
+    "description": "Synxdown is a lightweight no-dependency npm package for HTML and Markdown syntax highlighting.",
+
+    "url": "https://github.com/Hendo10X/synxdown",
+    "status": "Finished"
+  },
+  {
+    "name": "Waveroom",
+    "description": "Waveroom is a platform for creating and sharing your music takes and playlists.",
+
+    "url": "https://github.com/Hendo10X/waveroom",
+    "status": "WIP"
+  },
+  {
+    "name": "SpotAlb",
+    "description": "SpotAlb is a web project that leverages the Spotify Web API to fetch and present a visually appealing list of albums by a specified artist.",
+    "url": "https://github.com/Hendo10X/spotalb",
+    "status": "Finished"
+  },
+  {
+    "name": "Denki",
+    "description": "Denki is an AI-powered chatbot that can help you students with physics based probems.",
+    "url": "#",
+    "status": "WIP"
+  }
+]
