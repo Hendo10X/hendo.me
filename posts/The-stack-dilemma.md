@@ -14,7 +14,7 @@ You're absolutely right; the sheer volume of frameworks, CLIs, and languages is 
 
 ** The C++ Origin Story & The Stack Overlords **
 
-Your journey from C++ to where you are now is a classic tale of "fucking around and finding out." This is the single most important principle in a developer's life. The "stack-overlords" you mention are the same folks who peddle the myth that "C# is for games, JS is for the web." And while those are common use cases, they're not immutable laws of the universe. Just look at all the cool stuff being built with Python for web development and JavaScript for game engines. You correctly identified that asking yourself the right questions is more important than blindly following dogma. Your 15-year-old self was a genius for pondering C++ vs. C# syntax and whether building a custom engine was a one-way ticket to a nervous breakdown.
+My journey from C++ to where I am now is a classic tale of "fucking around and finding out." This is the single most important principle in a developer's life. The "stack-overlords" are the same folks who peddle the myth that "C# is for games, JS is for the web." And while those are common use cases, they're not immutable laws of the universe. Just look at all the cool stuff being built with Python for web development and JavaScript for game engines. You are correctly identified when asking yourself the right questions is more important than blindly following dogma. my 15-year-old self was a genius for pondering C++ vs. C# syntax and whether building a custom engine was a one-way ticket to a nervous breakdown.
 
 ** The Ultimate Truth: It's All Just Code **
 
