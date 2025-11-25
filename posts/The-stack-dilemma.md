@@ -16,7 +16,7 @@ You're absolutely right; the sheer volume of frameworks, CLIs, and languages is 
 
 My journey from C++ to where I am now is a classic tale of "fucking around and finding out." This is the single most important principle in a developer's life. The "stack-overlords" are the same folks who peddle the myth that "C# is for games, JS is for the web." And while those are common use cases, they're not immutable laws of the universe. Just look at all the cool stuff being built with Python for web development and JavaScript for game engines. You are correctly identified when asking yourself the right questions is more important than blindly following dogma. my 15-year-old self was a genius for pondering C++ vs. C# syntax and whether building a custom engine was a one-way ticket to a nervous breakdown.
 
-** The Ultimate Truth: It's All Just Code **
+**The Ultimate Truth: It's All Just Code **
 
 Here’s the cold, hard, nerdy truth: Programming languages are just tools. You're not "married" to them. You can't use a hammer to drive a screw, but you can definitely use a wrench to bash in a nail if you're stubborn enough. Your examples with Stack Overflow (C#) and Uber (Ruby on Rails) are prime evidence. These massive, successful platforms didn't use the "obvious" choice, proving that the goal isn't to pick the "right" technology, but to pick the one that gets the job done well. The ultimate goal is to build cool stuff, and the technology you choose is merely the vehicle for that idea. So, whether you're using Go or JS, or even if you decide to go full-on enterprise with something ridiculous like COBOL, the point is to create.
 
