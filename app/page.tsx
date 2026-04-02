@@ -6,7 +6,7 @@ export default function Home() {
       <h1 className="text-2xl font-bold font-dm-sans mb-6">
         Henderson Dike-Benard
       </h1>
-      <div className="flex flex-col gap-4 text-muted-foreground font-karla text-sm leading-relaxed">
+      <div className="flex flex-col gap-4 text-muted-foreground dark:text-foreground font-karla text-sm leading-relaxed">
         <p>I&apos;m interested in building things and understanding how they work.</p>
         <p>
           My background is in physics, which trained me to think about systems
@@ -35,7 +35,7 @@ export default function Home() {
         <h2 className="font-dm-sans font-bold text-sm text-foreground mb-3">
           INTERESTS
         </h2>
-        <div className="flex flex-col gap-4 text-muted-foreground font-karla text-sm leading-relaxed">
+        <div className="flex flex-col gap-4 text-muted-foreground dark:text-foreground font-karla text-sm leading-relaxed">
           <p>
             Outside of building products, I spend a lot of time reading. My
             interests drift between science, technology, philosophy, and the
@@ -51,7 +51,15 @@ export default function Home() {
               className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
               X
             </Link>
-            , Instagram, or reach me via{" "}
+            ,{" "}
+            <Link
+              href="https://github.com/Hendo10X"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
+              GitHub
+            </Link>
+            , or reach me via{" "}
             <Link
               href="mailto:hendersondike@gmail.com"
               className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">

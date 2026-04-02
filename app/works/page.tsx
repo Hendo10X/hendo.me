@@ -86,7 +86,7 @@ export default function WorksPage() {
                 </span>
               )}
             </div>
-            <p className="font-karla text-sm text-muted-foreground leading-relaxed">
+            <p className="font-karla text-sm text-muted-foreground dark:text-foreground leading-relaxed">
               {project.description}
             </p>
           </div>
