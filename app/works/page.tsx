@@ -51,6 +51,13 @@ const projects = [
     status: null,
   },
   {
+    name: "NEPAWATCH",
+    description:
+      "Nepawatch is a real-time power outage tracking app for Nigerian communities. It lets anyone instantly check whether their area currently has electricity — no sign-up, no WhatsApp group to join, no asking around.",
+    url: "https://nepawatch-five.vercel.app",
+    status: null,
+  },
+  {
     name: "TEENAGEHEADS",
     description:
       "Teenageheads is a project heavily inspired by the Teen Titans — the looks, the characters, the energy. A love letter to that era of design.",
