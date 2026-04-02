@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 
-import { Inter } from "next/font/google";
+import { DM_Sans, Karla } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar";
-import BreadcrumbNav from "@/components/ui/breadcrumb-nav";
+import Sidebar from "./components/sidebar";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+});
+
+const karla = Karla({
+  variable: "--font-karla",
   subsets: ["latin"],
 });
 
@@ -30,11 +34,16 @@ export default function RootLayout({
         data-token="07d32b34cee4012"
         strategy="afterInteractive"
       />
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${karla.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <BreadcrumbNav />
-          {children}
+          <div className="md:h-screen md:overflow-hidden">
+            <div className="flex flex-col md:flex-row md:h-full max-w-4xl mx-auto px-6 md:px-0">
+              <Sidebar />
+              <main className="flex-1 pt-6 pb-16 md:pt-16 md:px-16 md:h-full md:overflow-y-auto scrollbar-hide">
+                {children}
+              </main>
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>

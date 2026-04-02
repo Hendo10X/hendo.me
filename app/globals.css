@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-dm-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -112,21 +112,21 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-.font-inter {
-  font-family: var(--font-inter);
+.font-dm-sans {
+  font-family: var(--font-dm-sans), sans-serif;
 }
-.font-dm-mono {
-  font-family: var(--font-dm-mono);
+.font-karla {
+  font-family: var(--font-karla), sans-serif;
 }
 .prose {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-karla), sans-serif;
   color: var(--foreground);
 }
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-dm-sans), sans-serif;
   font-weight: 700;
 }
 .prose code {
@@ -157,4 +157,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

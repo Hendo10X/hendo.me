@@ -1,52 +1,64 @@
-import { HugeiconsIcon } from "@hugeicons/react";
-import {
-  Github01Icon,
-  ThreadsIcon,
-  TwitterIcon,
-} from "@hugeicons/core-free-icons";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-dvw h-[calc(100dvh-41px)] flex flex-row items-center justify-center">
-      <div className="flex flex-col w-full gap-4 px-4 max-w-xs sm:w-80 wrap-balance">
-        <div className="font-inter text-sm md:text-base">
-          Hello World, I am Hendo. Software developer and Interface designer.
-          Sometimes I love tinkering with Game development.
-        </div>
-        <div className="wrap-balance font-inter text-sm md:text-base">
-          I write clean and scalable and, design conscious software.
-        </div>
-        <div className="wrap-balance font-inter text-sm md:text-base">
-          I&apos;m currently building{" "}
-          <Link
-            href="https://github.com/Hendo10X/waveroom"
-            className="underline text-grey-500">
-            Waveroom
-          </Link>
-          <div className="flex flex-row gap-4 mt-4 font-inter  md:text-base text-muted-foreground ">
-            <div className="flex flex-row gap-2 text-xs md:text-base">
-              <Link
-                href="https://github.com/Hendo10X"
-                className="cursor-pointer hover:underline text-muted-foreground">
-                <HugeiconsIcon icon={Github01Icon} size={19} />
-              </Link>
-            </div>
-            <div className="text-xs md:text-base">
-              <Link
-                href="https://www.threads.com/@boi_hendo"
-                className="cursor-pointer hover:underline text-muted-foreground">
-                <HugeiconsIcon icon={ThreadsIcon} size={19} />
-              </Link>
-            </div>
-            <div className="flex flex-row gap-2 text-xs md:text-base">
-              <Link
-                href="https://x.com/boihendo"
-                className="cursor-pointer hover:underline text-muted-foreground">
-                <HugeiconsIcon icon={TwitterIcon} size={19} />
-              </Link>
-            </div>
-          </div>
+    <div className="max-w-prose">
+      <h1 className="text-2xl font-bold font-dm-sans mb-6">
+        Henderson Dike-Benard
+      </h1>
+      <div className="flex flex-col gap-4 text-muted-foreground font-karla text-sm leading-relaxed">
+        <p>I&apos;m interested in building things and understanding how they work.</p>
+        <p>
+          My background is in physics, which trained me to think about systems
+          from first principles. Most of my work now sits somewhere between
+          engineering, design, and product building. I like creating tools and
+          software that are simple, useful, and thoughtfully engineered.
+        </p>
+        <p>
+          I&apos;m especially drawn to the process of turning ideas into real things.
+          Sometimes that means writing code, sometimes designing interfaces, and
+          sometimes experimenting with strange technical ideas just to see what
+          happens.
+        </p>
+        <p>
+          Right now I&apos;m focused on building tools that reduce friction — things
+          that feel obvious in hindsight but didn&apos;t exist yet. Most of what I
+          ship is small and specific rather than big and general.
+        </p>
+        <p>
+          This site is a place where I collect some of the things I&apos;ve worked
+          on and some of the things I&apos;ve been thinking about.
+        </p>
+      </div>
+
+      <div className="mt-10">
+        <h2 className="font-dm-sans font-bold text-sm text-foreground mb-3">
+          INTERESTS
+        </h2>
+        <div className="flex flex-col gap-4 text-muted-foreground font-karla text-sm leading-relaxed">
+          <p>
+            Outside of building products, I spend a lot of time reading. My
+            interests drift between science, technology, philosophy, and the
+            occasional obscure subject that seems interesting enough to chase
+            for a while.
+          </p>
+          <p>
+            You can find me on{" "}
+            <Link
+              href="https://x.com/boihendo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
+              X
+            </Link>
+            , Instagram, or reach me via{" "}
+            <Link
+              href="mailto:hendersondike@gmail.com"
+              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
+              email
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </div>

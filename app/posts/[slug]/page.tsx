@@ -16,28 +16,22 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="w-full max-w-sm sm:max-w-2xl mx-auto px-4 py-8">
-        <article className="font-inter">
-          <header className="mb-8">
-            <h1 className="text-xl md:text-2xl font-bold mb-4 text-foreground">
-              {post.title}
-            </h1>
-            <div className="flex items-center gap-2 mb-6">
-              {post.date && (
-                <p className="text-muted-foreground text-sm md:text-base">
-                  {post.date}
-                </p>
-              )}
-            </div>
-          </header>
+    <div className="max-w-prose">
+      <article>
+        <header className="mb-8">
+          <h1 className="text-2xl font-bold mb-3 font-dm-sans text-foreground">
+            {post.title}
+          </h1>
+          {post.date && (
+            <p className="text-muted-foreground text-sm font-karla">{post.date}</p>
+          )}
+        </header>
 
-          <div
-            className="text-foreground font-inter font-light leading-relaxed text-sm md:text-base overflow-visible"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-        </article>
-      </div>
+        <div
+          className="prose font-karla font-light leading-relaxed text-sm overflow-visible"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </article>
     </div>
   );
 }
