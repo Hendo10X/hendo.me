@@ -43,6 +43,13 @@ export default function Home() {
             for a while.
           </p>
           <p>
+            In my spare time, I enjoy finding new music and scrolling through
+            Pinterest for inspiration across photography, design, urban art, and
+            cats. I&apos;m also a huge fan of football, Sudoku, mental maths,
+            and talking about philosophy — big stoicism guy, for what it&apos;s
+            worth.
+          </p>
+          <p>
             You can find me on{" "}
             <Link
               href="https://x.com/boihendo"
