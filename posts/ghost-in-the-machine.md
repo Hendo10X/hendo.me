@@ -1,5 +1,5 @@
 ---
-title: The Ghost in the Machine - Why AI Still Struggles with the Soul of Design
+title: The Ghost in the Machine
 date: April 21, 2026
 ---
 
