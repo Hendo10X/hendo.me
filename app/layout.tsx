@@ -28,15 +28,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          src="https://cdn.visitors.now/v.js"
+          data-token="21aeda09-1a3f-46ed-a019-a2c74fe9fa8d"
+          data-persist
+        ></script>
+      </head>
       <Script
         async
         src="https://cdn.seline.com/seline.js"
         data-token="07d32b34cee4012"
-        strategy="afterInteractive"
-      />
-      <Script
-        src="https://cdn.visitors.now/v.js"
-        data-token="vk_user_e61f078f7246fc5140621aa2b698f751"
         strategy="afterInteractive"
       />
       <body className={`${dmSans.variable} ${karla.variable} antialiased`}>
