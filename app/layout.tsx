@@ -34,6 +34,11 @@ export default function RootLayout({
         data-token="07d32b34cee4012"
         strategy="afterInteractive"
       />
+      <Script
+        src="https://cdn.visitors.now/v.js"
+        data-token="vk_user_e61f078f7246fc5140621aa2b698f751"
+        strategy="afterInteractive"
+      />
       <body className={`${dmSans.variable} ${karla.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="md:h-screen md:overflow-hidden">
