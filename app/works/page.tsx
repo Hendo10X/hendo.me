@@ -51,6 +51,13 @@ const projects = [
     status: null,
   },
   {
+    name: "NUEL",
+    description:
+      "Nuel is a simple artist portfolio I built as a mock for one of my classmates from secondary school. I used it as a playground to explore animations — blur effects, carousel loops, page transitions, and Combo usage.",
+    url: "https://nuel-alpha.vercel.app/",
+    status: null,
+  },
+  {
     name: "NEPAWATCH",
     description:
       "Nepawatch is a real-time power outage tracking app for Nigerian communities. It lets anyone instantly check whether their area currently has electricity — no sign-up, no WhatsApp group to join, no asking around.",
