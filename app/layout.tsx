@@ -28,14 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script
-          src="https://cdn.visitors.now/v.js"
-          data-token="21aeda09-1a3f-46ed-a019-a2c74fe9fa8d"
-          data-persist
-        ></script>
-      </head>
       <Script
         async
         src="https://cdn.seline.com/seline.js"
