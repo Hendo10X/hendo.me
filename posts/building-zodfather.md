@@ -1,6 +1,6 @@
 ---
 title: Building Zodfather
-date: April 25, 2026
+date: May 18, 2026
 ---
 
 A single-pane technical writeup on how I built [Zodfather](https://zodfather.space) — a browser tool that converts raw JSON into TypeScript Zod schemas, lets you build schemas visually, and renders the same schema six different ways. Nothing leaves your machine; everything happens client-side.
