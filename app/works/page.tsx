@@ -102,14 +102,14 @@ const projects = [
         name: "KAI",
         description: "Local-first, voice-powered desktop automation.",
         url: "https://github.com/Hendo10X/kai",
-        status: "work in progress",
+        status: " WIP",
     },
     {
         name: "RECURR",
         description:
             "Recurr is a developer-first subscription billing infrastructure for the crypto economy.",
         url: "https://github.com/Hendo10X/recurr",
-        status: "work in progress",
+        status: "WIP",
     },
     {
         name: "NOCKI",
