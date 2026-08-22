@@ -17,8 +17,21 @@ const karla = Karla({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hendo.me"),
   title: "Henderson Dike",
   description: "Henderson Dike's Portfolio",
+  openGraph: {
+    title: "Henderson Dike",
+    description: "Henderson Dike's Portfolio",
+    url: "https://hendo.me",
+    siteName: "hendo.me",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Henderson Dike",
+    description: "Henderson Dike's Portfolio",
+  },
 };
 
 export default function RootLayout({
