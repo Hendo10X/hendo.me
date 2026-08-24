@@ -17,14 +17,14 @@ const karla = Karla({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hendo.me"),
+  metadataBase: new URL("https://www.hendo.buzz"),
   title: "Henderson Dike",
   description: "Henderson Dike's Portfolio",
   openGraph: {
     title: "Henderson Dike",
     description: "Henderson Dike's Portfolio",
-    url: "https://hendo.me",
-    siteName: "hendo.me",
+    url: "https://www.hendo.buzz",
+    siteName: "hendo.buzz",
     type: "website",
   },
   twitter: {

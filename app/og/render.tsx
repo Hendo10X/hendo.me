@@ -19,6 +19,8 @@ export async function renderOG({
   subtitle: string;
   titleSize?: number;
 }) {
+  // Literal process.cwd() paths so @vercel/nft traces the fonts into
+  // the serverless bundle at build time.
   const [regular, bold] = await Promise.all([
     readFile(join(process.cwd(), "app/og/DMSans-Regular.ttf")),
     readFile(join(process.cwd(), "app/og/DMSans-Bold.ttf")),
