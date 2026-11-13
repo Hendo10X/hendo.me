@@ -11,7 +11,7 @@ The frame stayed deleted.
 
 ## The shape of the bug
 
-Delete frame 7. Press Ctrl+Z. Frame 7 does not come back — but the last stroke you drew on frame 6 quietly vanishes.
+Delete frame 7. Press Ctrl+Z. Frame 7 does not come back, but the last stroke you drew on frame 6 quietly vanishes.
 
 The interesting part is not that delete had no undo. It is that Ctrl+Z did something anyway. It did not shrug, or beep, or no-op. It confidently reached into a frame you were not looking at and removed work you had not asked it to remove. A missing feature announces itself. This just lied.
 
@@ -35,7 +35,7 @@ Frame id in, undo stack out. Undo on frame 4 could not touch frame 9 because it 
 
 Look at that type for a second and the problem is sitting right there in the first line.
 
-The history was indexed by frame. Which means it could store anything that happened inside a frame, and nothing that happened to the set of frames. Adding a frame, duplicating one, dragging one along the timeline, deleting one — none of it was recordable, because the thing being changed was the index itself.
+The history was indexed by frame. Which means it could store anything that happened inside a frame, and nothing that happened to the set of frames. Adding a frame, duplicating one, dragging one along the timeline, deleting one, none of it was recordable, because the thing being changed was the index itself.
 
 And delete was the worst of them, because delete did not merely fail to record. Delete removed the frame, and removed that frame's history along with it, since the entry was keyed by an id that no longer existed. Then it moved the selection to a neighbouring frame, because you have to be looking at something.
 
@@ -69,7 +69,7 @@ frames: s.frames.map((f) =>
 );
 ```
 
-One new frame object. One hundred and ninety-nine pointers to exactly the objects that were there before. So a snapshot is an array of two hundred pointers — a couple of kilobytes — and the frames inside it are the same frames the live state is using. The only genuinely new bytes in a history step are the one frame that actually changed.
+One new frame object. One hundred and ninety-nine pointers to exactly the objects that were there before. So a snapshot is an array of two hundred pointers, a couple of kilobytes, and the frames inside it are the same frames the live state is using. The only genuinely new bytes in a history step are the one frame that actually changed.
 
 This is the part worth taking away, and it is not really about undo: the immutability you adopted to keep React honest silently pays for a feature you had not written yet. Structural sharing is not an optimisation you bolt on. It is a thing you either already have or do not.
 
@@ -81,24 +81,24 @@ Fifty steps of history. Per frame. Pruned only when a frame was deleted. So a 20
 
 The document-level stack is fifty. Total. Across everything. And because the entries share their frames with the live state, fifty steps costs about fifty changed frames' worth of data.
 
-We went in to fix a correctness bug and came out using less memory. That is not a brag — it is just what tends to happen when a data model stops arguing with the thing it is modelling. The per-frame map was paying, in memory, for a fiction.
+We went in to fix a correctness bug and came out using less memory. That is not a brag, it is just what tends to happen when a data model stops arguing with the thing it is modelling. The per-frame map was paying, in memory, for a fiction.
 
 ## Where undo puts you
 
 Restoring the frames turns out not to be enough.
 
-Draw on frame 2. Navigate to frame 40. Press Ctrl+Z. If undo only restores the frame list, the right thing happens — your stroke on frame 2 is gone — and you see absolutely nothing, because you are looking at frame 40. You press it again. And again. You are now three edits deep into a part of your animation you cannot see.
+Draw on frame 2. Navigate to frame 40. Press Ctrl+Z. If undo only restores the frame list, the right thing happens, your stroke on frame 2 is gone, and you see absolutely nothing, because you are looking at frame 40. You press it again. And again. You are now three edits deep into a part of your animation you cannot see.
 
 So the snapshot carries the selection too, and undo puts you back on the frame where the edit happened. Undo a delete and you land on the frame that just reappeared, in its old position, with its drawing intact.
 
-The trade is that undo can now move you around, which is a genuine cost — you can be reading frame 40 and get teleported. We took it anyway. An edit you cannot see is indistinguishable from a bug, and we had just finished fixing a bug that was exactly that.
+The trade is that undo can now move you around, which is a genuine cost, you can be reading frame 40 and get teleported. We took it anyway. An edit you cannot see is indistinguishable from a bug, and we had just finished fixing a bug that was exactly that.
 
 ## What it still does not cover
 
-The title, the frame rate, and the canvas size. Those are settings rather than edits — you did not do them so much as choose them, and if you want the old value you can simply choose it again. Putting them in the undo stack would mean Ctrl+Z sometimes changes your frame rate, which is a new small lie to replace the old large one.
+The title, the frame rate, and the canvas size. Those are settings rather than edits, you did not do them so much as choose them, and if you want the old value you can simply choose it again. Putting them in the undo stack would mean Ctrl+Z sometimes changes your frame rate, which is a new small lie to replace the old large one.
 
 ## The thing we would tell ourselves
 
-Per-frame history was not a bad implementation of undo. It was a good implementation of something else, wearing undo's name, and it held up for as long as nobody asked it a question outside its vocabulary. The day someone deleted a frame and reached for Ctrl+Z, it did not fail — it answered anyway.
+Per-frame history was not a bad implementation of undo. It was a good implementation of something else, wearing undo's name, and it held up for as long as nobody asked it a question outside its vocabulary. The day someone deleted a frame and reached for Ctrl+Z, it did not fail, it answered anyway.
 
 We would rather it had beeped.

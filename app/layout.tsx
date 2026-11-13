@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
-import Nav from "./components/nav";
+import Sidebar from "./components/sidebar";
 import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hendo.buzz"),
   title: "Henderson Dike",
-  description: "Henderson Dike — building simple, useful, thoughtfully engineered tools.",
+  description: "Henderson Dike. Building simple, useful, thoughtfully engineered tools.",
   openGraph: {
     title: "Henderson Dike",
     description: "Henderson Dike's Portfolio",
@@ -47,10 +47,12 @@ export default function RootLayout({
       />
       <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <div className="wrap">
-            <Nav />
-            <main>{children}</main>
-            <Footer />
+          <div className="shell">
+            <Sidebar />
+            <main className="main">
+              {children}
+              <Footer />
+            </main>
           </div>
         </ThemeProvider>
       </body>

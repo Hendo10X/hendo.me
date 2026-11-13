@@ -17,9 +17,9 @@ Flipghost's canvas runs on Fabric, and Fabric's built-in `PencilBrush` does the 
 
 Singular. One number. For the entire path.
 
-That is not Fabric being lazy — it is inherited from the model underneath. A stroked path, in SVG and in Canvas alike, has a stroke width. The width is a property of the whole path, not of any position along it. There is no syntax for "3px here, tapering to 0.5px by the end", because the stroke is applied to the geometry uniformly, as a single operation, after the fact.
+That is not Fabric being lazy, it is inherited from the model underneath. A stroked path, in SVG and in Canvas alike, has a stroke width. The width is a property of the whole path, not of any position along it. There is no syntax for "3px here, tapering to 0.5px by the end", because the stroke is applied to the geometry uniformly, as a single operation, after the fact.
 
-So pressure has nowhere to go. You can sample it beautifully — sixty readings a second, perfectly accurate — and then you arrive at the API and there is one slot for width and you have to put one number in it. Everything you measured collapses to an average.
+So pressure has nowhere to go. You can sample it beautifully, sixty readings a second, perfectly accurate, and then you arrive at the API and there is one slot for width and you have to put one number in it. Everything you measured collapses to an average.
 
 ## The tempting fix, and why it is worse
 
@@ -33,7 +33,7 @@ You are essentially trying to fake a shape out of many lines. So draw the shape.
 
 This is the reframe the whole brush hangs on, and it is worth saying slowly.
 
-When you drag a real brush across real paper, the mark it leaves is not a line. It is a region — a long thin blob, fat where you leaned in, narrow where you lifted, tapered at both ends. We describe it as a line out of habit, but what is actually on the paper is a filled shape with a silhouette.
+When you drag a real brush across real paper, the mark it leaves is not a line. It is a region, a long thin blob, fat where you leaned in, narrow where you lifted, tapered at both ends. We describe it as a line out of habit, but what is actually on the paper is a filled shape with a silhouette.
 
 So compute that silhouette directly. `perfect-freehand` takes your sampled points, each carrying its own pressure, and returns the outline of the resulting mark: a closed polygon that traces all the way up one side of the stroke and back down the other, bulging where pressure was high and pinching where it was low.
 
@@ -60,7 +60,7 @@ The web exposes `PointerEvent.pressure`, a number from 0 to 1, and it is honest 
 - A mouse reports 0.5. Always. Constantly. While any button is held, the pressure is 0.5, because the spec has to return something and half seems fair.
 - A touchscreen frequently reports 0, or a flat 1, depending on the device and the browser. Some report a real value from the contact patch. Most do not.
 
-So a naive `size = pressure * width` gives every mouse user a line of precisely one constant width — we would have travelled a long way to reimplement the problem we started with — and gives some touch users a stroke of width zero, which is worse, because it is invisible.
+So a naive `size = pressure * width` gives every mouse user a line of precisely one constant width, we would have travelled a long way to reimplement the problem we started with, and gives some touch users a stroke of width zero, which is worse, because it is invisible.
 
 The rule ends up being explicit about who to trust:
 
@@ -72,7 +72,7 @@ function readsPressure(e: TPointerEvent) {
 
 Only a pen. If it is a pen and it reports something above zero, use it. Otherwise fall back to a flat 0.5 and hand the problem to `perfect-freehand`'s `simulatePressure`, which infers pressure from velocity instead: fast strokes come out thin, slow strokes come out fat.
 
-That sounds like a consolation prize and it is not. It is close to what a real brush does — drag a loaded brush quickly and it lays down less ink, precisely because it has less time to. A mouse user gets a line that thins on the fast confident sweeps and thickens through the slow careful curves, which is a decent likeness of intent even though the hardware told us nothing. The device is deciding per stroke, on pointer-down, which world it is in.
+That sounds like a consolation prize and it is not. It is close to what a real brush does, drag a loaded brush quickly and it lays down less ink, precisely because it has less time to. A mouse user gets a line that thins on the fast confident sweeps and thickens through the slow careful curves, which is a decent likeness of intent even though the hardware told us nothing. The device is deciding per stroke, on pointer-down, which world it is in.
 
 ## The whole silhouette, every single frame
 
@@ -80,11 +80,11 @@ One more thing worth knowing, because it violates an instinct.
 
 A fixed-width line is append-only. New point, new segment, draw it, done. Never touch what is already there.
 
-A pressure stroke is not. Its outline is not a running total — a point you add now can still reshape the tail behind it, because streamline pulls the rendered stroke toward the pointer path with a lag, and the ends taper relative to where the stroke finishes. The silhouette is a function of the whole point list, so if the list changes, the whole silhouette changes.
+A pressure stroke is not. Its outline is not a running total, a point you add now can still reshape the tail behind it, because streamline pulls the rendered stroke toward the pointer path with a lag, and the ends taper relative to where the stroke finishes. The silhouette is a function of the whole point list, so if the list changes, the whole silhouette changes.
 
 So every pointer move throws the outline away and rebuilds it from all the points collected so far, then fills it onto the top canvas layer. Which sounds ruinous, and simply is not: a stroke is a few hundred points at most, the maths is arithmetic, and it comfortably finishes inside a frame. The expensive-sounding thing was cheap, and the clever incremental thing we did not write would have been wrong.
 
-The last point of the stroke gets one extra flag — `last: true` — which is how `perfect-freehand` knows to close off the tail properly rather than leaving it mid-taper as though your hand were still moving.
+The last point of the stroke gets one extra flag, `last: true`, which is how `perfect-freehand` knows to close off the tail properly rather than leaving it mid-taper as though your hand were still moving.
 
 ## What did not change
 

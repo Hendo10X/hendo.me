@@ -1,6 +1,7 @@
 import { getAllPosts } from "@/lib/markdown";
 import Link from "next/link";
 import Circled from "../components/circled";
+import { noteFor } from "../components/annotations";
 
 function ddmm(date?: string) {
   if (!date) return "";
@@ -39,6 +40,7 @@ export default function PostsPage() {
               const y = year(post.date);
               const showYear = y !== lastYear;
               lastYear = y;
+              const note = noteFor[post.slug];
               return (
                 <li key={post.slug}>
                   <span className="yr">{showYear ? y : ""}</span>
@@ -46,7 +48,11 @@ export default function PostsPage() {
                     <Link href={`/posts/${post.slug}`} className="title">
                       {post.title}
                     </Link>
-                    {i === 0 && <Circled>new</Circled>}
+                    {i === 0 ? (
+                      <Circled>new</Circled>
+                    ) : note ? (
+                      <span className="note">{note}</span>
+                    ) : null}
                   </span>
                   <span className="date">{ddmm(post.date)}</span>
                 </li>

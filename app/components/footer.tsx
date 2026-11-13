@@ -31,7 +31,7 @@ export default function Footer() {
       <span suppressHydrationWarning>
         {time ? `${time} in Lagos, Nigeria` : "Lagos, Nigeria"}
       </span>
-      {/* a little pen doodle — a wink */}
+      {/* a little pen doodle, a wink */}
       <svg
         className="doodle"
         width="26"

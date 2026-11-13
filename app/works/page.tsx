@@ -15,7 +15,7 @@ const groups: { label: string; items: Project[] }[] = [
       {
         name: "Mithril",
         description:
-          "The payments plumbing every Nigerian fintech plugs into — one interface over every bank provider.",
+          "The payments plumbing every Nigerian fintech plugs into. One interface over every bank provider.",
         url: null,
         wip: true,
       },
@@ -34,13 +34,13 @@ const groups: { label: string; items: Project[] }[] = [
       {
         name: "Pocketstrip",
         description:
-          "Drop-in billing for SaaS — subscriptions and recurring payments with minimal setup.",
+          "Drop-in billing for SaaS: subscriptions and recurring payments with minimal setup.",
         url: "https://github.com/Hendo10X/pocketstrip",
       },
       {
         name: "Skrip",
         description:
-          "A headless CMS made of plain markdown files — drop them in a folder, get a JSON API back.",
+          "A headless CMS made of plain markdown files. Drop them in a folder, get a JSON API back.",
         url: "https://www.skrip.space",
       },
       {
@@ -52,7 +52,7 @@ const groups: { label: string; items: Project[] }[] = [
       {
         name: "Nanogo",
         description:
-          "A lightweight Go web framework built from scratch — routing, middleware, JSON, extension points.",
+          "A lightweight Go web framework built from scratch: routing, middleware, JSON, extension points.",
         url: "https://github.com/Hendo10X/nanogo",
       },
       {
@@ -91,7 +91,7 @@ const groups: { label: string; items: Project[] }[] = [
       {
         name: "Nepawatch",
         description:
-          "Real-time power-outage tracking for Nigerian communities — no sign-up, no WhatsApp group.",
+          "Real-time power-outage tracking for Nigerian communities. No sign-up, no WhatsApp group.",
         url: "https://nepawatch-five.vercel.app",
       },
       {
@@ -102,7 +102,7 @@ const groups: { label: string; items: Project[] }[] = [
       },
       {
         name: "Tento",
-        description: "A personal taste profile — rank your top 10 of anything and share it.",
+        description: "A personal taste profile. Rank your top 10 of anything and share it.",
         url: "https://tento-one.vercel.app/",
       },
       {
@@ -124,7 +124,7 @@ const groups: { label: string; items: Project[] }[] = [
       {
         name: "Flipghost",
         description:
-          "Draw frame-by-frame animations in the browser — a digital flipbook with onion-skinning and GIF export.",
+          "Draw frame-by-frame animations in the browser: a digital flipbook with onion-skinning and GIF export.",
         url: "https://github.com/Hendo10X/flipghost",
       },
     ],
@@ -135,7 +135,7 @@ const groups: { label: string; items: Project[] }[] = [
       {
         name: "Nuel",
         description:
-          "An artist portfolio I used as a playground for animation — blur, carousels, page transitions.",
+          "An artist portfolio I used as a playground for animation: blur, carousels, page transitions.",
         url: "https://nuel-alpha.vercel.app/",
       },
       {

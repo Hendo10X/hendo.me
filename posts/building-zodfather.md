@@ -3,13 +3,13 @@ title: Building Zodfather
 date: May 18, 2026
 ---
 
-A single-pane technical writeup on how I built [Zodfather](https://zodfather.space) — a browser tool that converts raw JSON into TypeScript Zod schemas, lets you build schemas visually, and renders the same schema six different ways. Nothing leaves your machine; everything happens client-side.
+A single-pane technical writeup on how I built [Zodfather](https://zodfather.space), a browser tool that converts raw JSON into TypeScript Zod schemas, lets you build schemas visually, and renders the same schema six different ways. Nothing leaves your machine; everything happens client-side.
 
 This article walks the architecture from the inside out: the intermediate representation, the inference pipeline, schema generation, the multi-view system, and the choices that made the editor feel sharp rather than busy.
 
 ## The problem
 
-If you write a TypeScript backend that talks to anything — Stripe, GitHub, your own gateway, a webhook — you spend a non-trivial slice of your week typing this:
+If you write a TypeScript backend that talks to anything, Stripe, GitHub, your own gateway, a webhook, you spend a non-trivial slice of your week typing this:
 
 ```ts
 const userSchema = z.object({
@@ -22,7 +22,7 @@ const userSchema = z.object({
 })
 ```
 
-It's never the interesting part. You stare at a sample payload, mentally walk every key, decide which refinements you need, and type it out. Once. Then again next week for the next endpoint. The information is already in the JSON — the shape, the formats, which fields are nullable. Pulling it out by hand is busywork.
+It's never the interesting part. You stare at a sample payload, mentally walk every key, decide which refinements you need, and type it out. Once. Then again next week for the next endpoint. The information is already in the JSON, the shape, the formats, which fields are nullable. Pulling it out by hand is busywork.
 
 So Zodfather treats a JSON sample as the spec. Paste it, click any refinements you want on top of the defaults, copy the result.
 
@@ -103,7 +103,7 @@ const UUID_RE  = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 const ISO_RE   = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/
 ```
 
-This is intentionally conservative — it picks refinements I'm confident about and leaves the rest. You can always click more refinements on. You shouldn't have to click them off.
+This is intentionally conservative, it picks refinements I'm confident about and leaves the rest. You can always click more refinements on. You shouldn't have to click them off.
 
 ## Generation: IR out, Zod in
 
@@ -145,9 +145,9 @@ function innerCode(node, indent, opts) {
 There are two things I care about here, and neither is the Zod method names:
 
 - **`safeKey()` quotes any key that isn't a valid JS identifier.** Real-world JSON keys include `2fa_enabled`, `http.method`, `kebab-case-key`. Emitting unquoted keys for those would compile to broken code and break the user's day.
-- **Suffix order is fixed**: refinements first, then `.nullable()`, then `.optional()`. Zod cares about the order — `.nullable().optional()` ≠ `.optional().nullable()` in inferred types — and getting it wrong silently changes the meaning. So the generator is the only place that emits suffixes, and the order is hardcoded.
+- **Suffix order is fixed**: refinements first, then `.nullable()`, then `.optional()`. Zod cares about the order, `.nullable().optional()` ≠ `.optional().nullable()` in inferred types, and getting it wrong silently changes the meaning. So the generator is the only place that emits suffixes, and the order is hardcoded.
 
-Other generators (TypeScript types, JSON Schema) use the same tree walk with different leaf strings. The `.strict()` flag, the schema name, the export style — all configuration on the same function.
+Other generators (TypeScript types, JSON Schema) use the same tree walk with different leaf strings. The `.strict()` flag, the schema name, the export style, all configuration on the same function.
 
 ## Six views, one tree
 
@@ -167,16 +167,16 @@ switch (view) {
 
 The interesting ones:
 
-- **Tree** — the clickable editor view. The only view that's editable. Refinement chips, rename-in-place, type pickers, add/remove buttons. Everything else is read-only.
-- **Hierarchy** — a vertical org-chart layout. Each composite node is a card; children sit underneath connected by SVG paths. Reads like a system diagram.
-- **Mindmap** — radial layout. The root sits at the center; depth-1 children fan out around it; deeper nodes branch off their parents. Useful when an object has a lot of top-level keys and you want them all at once.
-- **Table** — flattened key/type/refinement table. Good for paste-into-Notion documentation, and for grokking large flat payloads at a glance.
+- **Tree**: the clickable editor view. The only view that's editable. Refinement chips, rename-in-place, type pickers, add/remove buttons. Everything else is read-only.
+- **Hierarchy**: a vertical org-chart layout. Each composite node is a card; children sit underneath connected by SVG paths. Reads like a system diagram.
+- **Mindmap**: radial layout. The root sits at the center; depth-1 children fan out around it; deeper nodes branch off their parents. Useful when an object has a lot of top-level keys and you want them all at once.
+- **Table**: flattened key/type/refinement table. Good for paste-into-Notion documentation, and for grokking large flat payloads at a glance.
 
-`lib/schema/views/flatten.ts` and `layout.ts` do the math that turns a `SchemaNode` into x/y positions for hierarchy and mindmap. Both are pure — they take a tree, return an array of `{ node, x, y, parent }` items, and the React components do nothing but read those.
+`lib/schema/views/flatten.ts` and `layout.ts` do the math that turns a `SchemaNode` into x/y positions for hierarchy and mindmap. Both are pure, they take a tree, return an array of `{ node, x, y, parent }` items, and the React components do nothing but read those.
 
 This is the highest-leverage bit of the architecture: **adding a seventh view costs almost nothing.** Want ER-diagram boxes? D2-style? An animated flow? Write the layout function, write the component, register the tab.
 
-The transition between views animates with Motion's `AnimatePresence mode="wait"` so a view fades out before the next fades in — clean enough that you actually feel like you're spinning the same object, not loading different ones.
+The transition between views animates with Motion's `AnimatePresence mode="wait"` so a view fades out before the next fades in, clean enough that you actually feel like you're spinning the same object, not loading different ones.
 
 ## The builder: mutating the tree
 
@@ -233,7 +233,7 @@ useEffect(() => {
 }, [state.raw, state.name, state.strict, state.mode])
 ```
 
-I don't persist the parsed tree — I persist the inputs that produce it. Reload, re-parse, you're where you left off. It also means schema changes (new refinements, generator bug fixes) flow through to your old draft without a migration step.
+I don't persist the parsed tree, I persist the inputs that produce it. Reload, re-parse, you're where you left off. It also means schema changes (new refinements, generator bug fixes) flow through to your old draft without a migration step.
 
 The version suffix on the storage key (`v2`) is the only migration tool. Bump it when the input contract changes, accept the cost of one wiped draft.
 
@@ -244,10 +244,10 @@ The visual language is one decision applied everywhere: **make everything small,
 A few specific patterns that punched above their weight:
 
 - **Shiki** for code rendering. One singleton, one theme (`github-light`), client-side `codeToHtml`. The Zod output pane, the JSON schema view, the TypeScript view, and the example cards all read from the same highlighter. I dropped dark mode because the single-theme aesthetic is cleaner and removed an entire dependency.
-- **Motion** for everything stateful. Mode switch uses `layoutId` so the active pill slides between Import and Build. Tree rows expand/collapse with a `height: auto` animation. View transitions cross-fade. None of it is decorative — it's all communicating change.
+- **Motion** for everything stateful. Mode switch uses `layoutId` so the active pill slides between Import and Build. Tree rows expand/collapse with a `height: auto` animation. View transitions cross-fade. None of it is decorative, it's all communicating change.
 - **Hugeicons** for icons. Strict 11–13 px sizing everywhere keeps icons from competing with the text.
 - **Progressive blur** for sticky headers. Stacked `backdrop-blur` layers, each masked with a vertical gradient. Content scrolls behind in a real frosted-glass way rather than hard-cutting at the header edge.
-- **Mobile guard**. The editor is three columns of dense controls. I tried to make it work on phones and gave up — it's a bad version of itself at 375px. So a `MobileGuard` wraps the entire layout and shows a centered "Open on desktop" card under `xl`. Better than shipping a degraded experience.
+- **Mobile guard**. The editor is three columns of dense controls. I tried to make it work on phones and gave up, it's a bad version of itself at 375px. So a `MobileGuard` wraps the entire layout and shows a centered "Open on desktop" card under `xl`. Better than shipping a degraded experience.
 
 I also wrote 28 curated examples (`lib/examples.ts`) across Auth, Payments, DevOps, Social, Commerce, Media, Data, AI, Productivity, Infra, and Content. They serve double duty: a real-world tour for new users, and my regression suite. If the OpenAI completion example stops generating a clean schema, I know the inference changed.
 
@@ -255,7 +255,7 @@ I also wrote 28 curated examples (`lib/examples.ts`) across Auth, Payments, DevO
 
 **Onboarding a new API.** Paste a sample response, copy the schema, drop it into your client. Five seconds versus five minutes.
 
-**Validating webhook payloads.** Real webhook samples are messy — optional fields, mixed shapes, ISO timestamps masquerading as strings. The array-shape unification was built for this; it tells you, accurately, which fields are sometimes missing.
+**Validating webhook payloads.** Real webhook samples are messy, optional fields, mixed shapes, ISO timestamps masquerading as strings. The array-shape unification was built for this; it tells you, accurately, which fields are sometimes missing.
 
 **Documenting an internal type.** Switch to the Table view. Screenshot it. It looks like documentation because it *is* documentation, with no extra work.
 
@@ -269,16 +269,16 @@ I also wrote 28 curated examples (`lib/examples.ts`) across Auth, Payments, DevO
 
 - **Sharable URLs.** Encoding the tree into a URL hash is doable; I've held off because every user I've watched copies the code into a file within seconds of loading the page. Persisting locally was higher value.
 - **Cmd-K palette.** Adds complexity in exchange for one keystroke. Maybe later.
-- **Server-side anything.** No accounts, no telemetry, no remote rendering. The entire app is static — `/`, `/convert`, `/examples`. The build output is four prerendered HTML files plus client bundles.
+- **Server-side anything.** No accounts, no telemetry, no remote rendering. The entire app is static, `/`, `/convert`, `/examples`. The build output is four prerendered HTML files plus client bundles.
 - **A "convert from TypeScript types" path.** Tempting. Out of scope until I'm confident the JSON path is mature.
 
 ## Stack
 
-- **Next.js 16** (App Router, Turbopack). Three static routes. No server components doing real work — everything that matters runs in the browser.
+- **Next.js 16** (App Router, Turbopack). Three static routes. No server components doing real work, everything that matters runs in the browser.
 - **Tailwind v4** with a small custom token set. No component library underneath; raw HTML elements styled with utilities.
 - **Motion** (the successor to Framer Motion).
 - **Shiki** for syntax highlighting.
-- **Zod** itself — used in the generated code, not in the app code.
+- **Zod** itself, used in the generated code, not in the app code.
 - **Bun** for the package manager, dev server, and lockfile.
 
 The bundle is small because the architecture is small. One IR, one reducer, six views all reading from the same value. Every feature added has cost, and the cheapness of adding things only stays cheap if the center holds.

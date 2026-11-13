@@ -10,7 +10,7 @@ Don't worry, we've all been there. It's a digital existential crisis, and your e
 
 ** The Overwhelming Buffet of Tech **
 
-You're absolutely right; the sheer volume of frameworks, CLIs, and languages is a cruel joke. It’s like being a kid in a candy store, but all the candy is a complex sugar that might give you diabetes in the future. The advice to "use something lightweight" is the tech equivalent of a parent saying "just eat what's on your plate." It's not wrong, but it completely ignores the fact that some of us just want the junk food of the tech world. Your analogy to choosing hobbies or clothes is spot-on—it's a deeply personal, use-case-driven decision. There's no one-size-fits-all, unless you're trying to build a static HTML page, in which case, literally anything works.
+You're absolutely right; the sheer volume of frameworks, CLIs, and languages is a cruel joke. It’s like being a kid in a candy store, but all the candy is a complex sugar that might give you diabetes in the future. The advice to "use something lightweight" is the tech equivalent of a parent saying "just eat what's on your plate." It's not wrong, but it completely ignores the fact that some of us just want the junk food of the tech world. Your analogy to choosing hobbies or clothes is spot-on, it's a deeply personal, use-case-driven decision. There's no one-size-fits-all, unless you're trying to build a static HTML page, in which case, literally anything works.
 
 ** The C++ Origin Story & The Stack Overlords **
 

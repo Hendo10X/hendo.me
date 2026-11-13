@@ -11,7 +11,7 @@ The fever was intense, and I was seeing things.
 
 I'm still feeling a bit off, with a weird taste in my mouth, but I'm slowly getting back to normal.
 
-The sickness hit at the end of July. I guess I was due for a break. For the past thirteen days straight, I'd been working like crazy on my project, [Waveroom] — a platform where music lovers can share their thoughts and playlists. Coding, designing, trying to make the right decisions... it was a lot.
+The sickness hit at the end of July. I guess I was due for a break. For the past thirteen days straight, I'd been working like crazy on my project, [Waveroom], a platform where music lovers can share their thoughts and playlists. Coding, designing, trying to make the right decisions... it was a lot.
 
 As a final-year physics student, I’ve got a lot on my plate. I'm terrified of failing, but I also want a good future. So, I’ve been burning the candle at both ends, trying to be a good student and build my career as a software designer.
 
@@ -39,7 +39,7 @@ Every single thing that happens, good or bad, is a lesson. I need to pay attenti
 
 ** 5. Build Meaningful Relationships **
 
-You can’t do everything alone. The people in your life—family, friends, mentors—are the most important support system you can have.
+You can’t do everything alone. The people in your life, family, friends, mentors, are the most important support system you can have.
 
 I wish I could elaborate further on these newfound truths, but my brain's CPU is still running on low power mode. For now, please enjoy this small dose of my "mind juice" and consider it a testament to the strange and wonderful clarity that a good old-fashioned fever can bring.
 

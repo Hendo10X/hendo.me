@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 // Shared config + renderer for all Open Graph images.
-// Paper card, ink Geist text, no gradients — matches the site.
+// Paper card, ink Geist text, no gradients, matches the site.
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

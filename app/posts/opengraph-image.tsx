@@ -1,7 +1,7 @@
 import { renderOG, size, contentType } from "@/app/og/render";
 
 export { size, contentType };
-export const alt = "Writing — Henderson Dike-Benard";
+export const alt = "Writing by Henderson Dike-Benard";
 
 export default function Image() {
   return renderOG({

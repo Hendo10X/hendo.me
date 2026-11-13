@@ -1,4 +1,4 @@
-// A word or two wrapped in a hand-drawn ballpoint oval, in Caveat —
+// A word or two wrapped in a hand-drawn ballpoint oval, in Caveat:
 // the way you'd circle something in the margin with a pen.
 export default function Circled({ children }: { children: React.ReactNode }) {
   return (
