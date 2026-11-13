@@ -3,12 +3,13 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 // Shared config + renderer for all Open Graph images.
-// Plain white card, near-black DM Sans text, no gradients — matches the site.
+// Paper card, ink Geist text, no gradients — matches the site.
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const FG = "#0d0f14"; // foreground (near-black)
-const MUTED = "#6b7280"; // muted-foreground
+const BG = "#fdfdfc"; // paper
+const FG = "#111111"; // ink
+const MUTED = "#6b7280"; // muted
 
 export async function renderOG({
   title,
@@ -22,8 +23,8 @@ export async function renderOG({
   // Literal process.cwd() paths so @vercel/nft traces the fonts into
   // the serverless bundle at build time.
   const [regular, bold] = await Promise.all([
-    readFile(join(process.cwd(), "app/og/DMSans-Regular.ttf")),
-    readFile(join(process.cwd(), "app/og/DMSans-Bold.ttf")),
+    readFile(join(process.cwd(), "app/og/Geist-Regular.ttf")),
+    readFile(join(process.cwd(), "app/og/Geist-Bold.ttf")),
   ]);
 
   return new ImageResponse(
@@ -35,9 +36,9 @@ export async function renderOG({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#ffffff",
+          backgroundColor: BG,
           padding: "80px",
-          fontFamily: "DM Sans",
+          fontFamily: "Geist",
         }}>
         <div
           style={{
@@ -47,7 +48,7 @@ export async function renderOG({
             color: MUTED,
             letterSpacing: "0.01em",
           }}>
-          hendo.me
+          hendo.buzz
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -58,7 +59,7 @@ export async function renderOG({
               fontWeight: 700,
               color: FG,
               lineHeight: 1.05,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.03em",
               maxWidth: 1000,
             }}>
             {title}
@@ -81,8 +82,8 @@ export async function renderOG({
     {
       ...size,
       fonts: [
-        { name: "DM Sans", data: regular, weight: 400, style: "normal" },
-        { name: "DM Sans", data: bold, weight: 700, style: "normal" },
+        { name: "Geist", data: regular, weight: 400, style: "normal" },
+        { name: "Geist", data: bold, weight: 700, style: "normal" },
       ],
     }
   );
