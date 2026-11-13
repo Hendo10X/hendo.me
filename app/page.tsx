@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/markdown";
 import Circled from "./components/circled";
-import { noteFor } from "./components/annotations";
 
 function ddmm(date?: string) {
   if (!date) return "";
@@ -68,27 +67,20 @@ export default function Home() {
       <section className="section">
         <p className="section-label">Writing</p>
         <ul className="index">
-          {posts.map((post, i) => {
-            const note = noteFor[post.slug];
-            return (
-              <li key={post.slug}>
-                <span className="yr">
-                  {post.date ? new Date(post.date).getFullYear() : ""}
-                </span>
-                <span className="title-row">
-                  <Link href={`/posts/${post.slug}`} className="title">
-                    {post.title}
-                  </Link>
-                  {i === 0 ? (
-                    <Circled>new</Circled>
-                  ) : note ? (
-                    <span className="note">{note}</span>
-                  ) : null}
-                </span>
-                <span className="date">{ddmm(post.date)}</span>
-              </li>
-            );
-          })}
+          {posts.map((post, i) => (
+            <li key={post.slug}>
+              <span className="yr">
+                {post.date ? new Date(post.date).getFullYear() : ""}
+              </span>
+              <span className="title-row">
+                <Link href={`/posts/${post.slug}`} className="title">
+                  {post.title}
+                </Link>
+                {i === 0 && <Circled>new</Circled>}
+              </span>
+              <span className="date">{ddmm(post.date)}</span>
+            </li>
+          ))}
         </ul>
         <p style={{ marginTop: 16, fontSize: 14 }}>
           <Link href="/posts" className="muted" style={{ textDecoration: "none" }}>

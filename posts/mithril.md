@@ -37,6 +37,8 @@ Mithril is that layer.
 
 It's not a flashy product. It doesn't have a slick consumer interface or a viral growth loop. It's plumbing. But the best infrastructure is always boring from the outside, it's only interesting when you trace how many things depend on it.
 
+{{boring is the compliment}}
+
 Deep in the mines of Moria, the dwarves dug too greedily and too deep chasing mithril. I'm not suggesting Nigerian fintech infrastructure is as dramatic as that. But the principle holds, the most valuable material is often the one buried underneath everything else, the one you only notice when it's gone.
 
 I'm building Mithril because I think that layer should exist, and it doesn't yet.

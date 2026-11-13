@@ -479,6 +479,34 @@ a:hover {
   border-radius: 10px;
 }
 
+/* Handwritten margin annotation inside an article: a witty note with a
+   little hand-drawn arrow pointing back at the line above it. */
+.ann-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: -4px 0 18px;
+  padding-left: 10px;
+  color: var(--accent);
+  font-family: "Caveat", "Bradley Hand", cursive;
+  font-size: 21px;
+  line-height: 1.1;
+  transform: rotate(-2deg);
+}
+.ann-arrow {
+  width: 34px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.ann-arrow path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ------------------------------------------------------------------ */
 /*  Footer: live local time + a little doodle                         */
 /* ------------------------------------------------------------------ */

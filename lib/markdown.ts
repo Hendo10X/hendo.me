@@ -112,6 +112,17 @@ export function parseMarkdown(markdown: string): {
       inList = false;
     }
 
+    // Handwritten margin annotation on its own line: {{witty note}}
+    const annMatch = line.trim().match(/^\{\{(.+)\}\}$/);
+    if (annMatch) {
+      const text = annMatch[1].replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      content +=
+        '<div class="ann-block"><svg class="ann-arrow" viewBox="0 0 34 22" aria-hidden="true">' +
+        '<path d="M31 19 C19 19 9 15 6 4 M6 4 L2 10 M6 4 L12 8"/></svg>' +
+        `<span>${text}</span></div>\n`;
+      continue;
+    }
+
     // Convert markdown to HTML
     let htmlLine = line;
 

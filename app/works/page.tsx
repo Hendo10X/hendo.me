@@ -72,6 +72,40 @@ const groups: { label: string; items: Project[] }[] = [
           "A state-based UI component system where one badge animates between its states.",
         url: "https://morphbadges-landing.vercel.app/",
       },
+      {
+        name: "UnitCMS",
+        description: "A content and configuration backend for mobile apps.",
+        url: "https://unitcms.vercel.app",
+      },
+      {
+        name: "Zodfather",
+        description:
+          "Paste JSON, build a schema visually, and render it as Zod and more. Nothing leaves your machine.",
+        url: "https://zodfather.space",
+      },
+      {
+        name: "Loamy",
+        description:
+          "Turn one brand color into a full design system, exported as CSS variables, Tailwind config, or JSON.",
+        url: "https://loamy-one.vercel.app",
+      },
+      {
+        name: "Kanopee",
+        description:
+          "Nested comment threads for React, Svelte, and Vue in three lines of code.",
+        url: "https://kanopee-core.vercel.app",
+      },
+      {
+        name: "Synxdown",
+        description:
+          "A lightweight npm package for markdown and HTML syntax highlighting.",
+        url: "https://www.npmjs.com/package/synxdown",
+      },
+      {
+        name: "gsap-skills",
+        description: "A GSAP animation skill for AI coding assistants.",
+        url: "https://github.com/Hendo10X/gsap-skills",
+      },
     ],
   },
   {
@@ -127,6 +161,52 @@ const groups: { label: string; items: Project[] }[] = [
           "Draw frame-by-frame animations in the browser: a digital flipbook with onion-skinning and GIF export.",
         url: "https://github.com/Hendo10X/flipghost",
       },
+      {
+        name: "Fleent",
+        description: "An AI all-purpose to-do app designed for people with ADHD.",
+        url: "https://fleent.vercel.app",
+      },
+      {
+        name: "Flint",
+        description: "The mobile app for Fleent.",
+        url: "https://github.com/Hendo10X/flint",
+      },
+      {
+        name: "Waveroom",
+        description: "A place to talk and chat about music, and the stats behind it.",
+        url: "https://waveroom.vercel.app",
+      },
+      {
+        name: "Jockify",
+        description: "An AI-powered music remix assistant.",
+        url: "https://jockify.vercel.app",
+      },
+      {
+        name: "Mostlilkeyto",
+        description: "A voting app for who is most likely to do something.",
+        url: "https://mostlilkeyto.vercel.app",
+      },
+      {
+        name: "Yardage",
+        description: "A marketplace for students to sell their used things.",
+        url: "https://github.com/Hendo10X/Yardage",
+      },
+      {
+        name: "Cloutpass",
+        description:
+          "A scaffold for influence-as-a-service, built with Farcaster in mind.",
+        url: "https://github.com/Hendo10X/cloutpass",
+      },
+      {
+        name: "Rogue",
+        description: "A social-media account marketplace and growth platform.",
+        url: "https://github.com/Hendo10X/rogue",
+      },
+      {
+        name: "Yapwithhendo",
+        description: "An earlier version of my blog, built with Marble.",
+        url: "https://yapwithhendo.vercel.app",
+      },
     ],
   },
   {
@@ -142,6 +222,64 @@ const groups: { label: string; items: Project[] }[] = [
         name: "Teenageheads",
         description: "A love letter to the Teen Titans era of design.",
         url: "https://teenageheads.vercel.app/",
+      },
+      {
+        name: "Adadelish",
+        description: "A template design site built with GSAP and Motion.",
+        url: "https://adadelish.vercel.app",
+      },
+    ],
+  },
+  {
+    label: "Data & physics",
+    items: [
+      {
+        name: "FIFdrift",
+        description: "An ML tool that detects shifts in FIFA playstyle over time.",
+        url: "https://github.com/Hendo10X/FIFdrift",
+      },
+      {
+        name: "WPT Simulation",
+        description:
+          "A Python study of wireless power-transfer efficiency against distance, frequency, and misalignment.",
+        url: "https://github.com/Hendo10X/WPT-simulation",
+      },
+    ],
+  },
+  {
+    label: "Client & commissioned",
+    items: [
+      {
+        name: "DMPartners",
+        description:
+          "A site for a commercial and investment advisory firm at the intersection of sports and African markets.",
+        url: "https://dmp-hendo10x.vercel.app",
+      },
+      {
+        name: "Solo",
+        description: "A website for a talent-hunt firm.",
+        url: "https://solo-weld.vercel.app",
+      },
+    ],
+  },
+  {
+    label: "Games",
+    items: [
+      {
+        name: "Glyph",
+        description: "A shape-shifting physics platformer built in Godot 4.",
+        url: "https://github.com/Hendo10X/glyph",
+      },
+      {
+        name: "Ninja",
+        description:
+          "A minimalist top-down action game: fast combat, ragdolls, bullet time. Godot 4.",
+        url: "https://github.com/Hendo10X/ninja",
+      },
+      {
+        name: "Milo",
+        description: "A 2D arcade stacking game in Godot 4: stack blocks, save the dog.",
+        url: "https://github.com/Hendo10X/milo",
       },
     ],
   },

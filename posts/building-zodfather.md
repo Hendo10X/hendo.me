@@ -24,6 +24,8 @@ const userSchema = z.object({
 
 It's never the interesting part. You stare at a sample payload, mentally walk every key, decide which refinements you need, and type it out. Once. Then again next week for the next endpoint. The information is already in the JSON, the shape, the formats, which fields are nullable. Pulling it out by hand is busywork.
 
+{{so I taught a computer to do it}}
+
 So Zodfather treats a JSON sample as the spec. Paste it, click any refinements you want on top of the defaults, copy the result.
 
 But "paste and copy" is the import path. A schema is also a *thing you compose*, and once it exists as a structured value in memory, there's no reason it can only be displayed one way. So Zodfather also does two harder things: it lets you **build** a schema visually with no JSON at all, and it **renders the same schema in six different views**.

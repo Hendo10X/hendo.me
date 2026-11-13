@@ -13,6 +13,8 @@ The frame stayed deleted.
 
 Delete frame 7. Press Ctrl+Z. Frame 7 does not come back, but the last stroke you drew on frame 6 quietly vanishes.
 
+{{undo had ONE job}}
+
 The interesting part is not that delete had no undo. It is that Ctrl+Z did something anyway. It did not shrug, or beep, or no-op. It confidently reached into a frame you were not looking at and removed work you had not asked it to remove. A missing feature announces itself. This just lied.
 
 ## Why we built it that way
