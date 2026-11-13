@@ -1,81 +1,117 @@
 import Link from "next/link";
+import { getAllPosts } from "@/lib/markdown";
+import Circled from "./components/circled";
+
+function ddmm(date?: string) {
+  if (!date) return "";
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return "";
+  return `${String(d.getDate()).padStart(2, "0")}/${String(
+    d.getMonth() + 1
+  ).padStart(2, "0")}`;
+}
+
+// A few things actively being built — shown on the home page.
+const building = [
+  { name: "Mithril", note: "the payments plumbing every Nigerian fintech plugs into" },
+  { name: "UnitCMS", note: "a content & config backend for mobile apps" },
+  { name: "Kai", note: "local-first, voice-powered desktop automation" },
+];
 
 export default function Home() {
+  const posts = getAllPosts().slice(0, 5);
+
   return (
-    <div className="max-w-prose">
-      <h1 className="text-2xl font-bold font-dm-sans mb-6">
-        Henderson Dike-Benard
-      </h1>
-      <div className="flex flex-col gap-4 text-muted-foreground dark:text-foreground font-karla text-sm leading-relaxed">
+    <>
+      <header>
+        <h1>Henderson Dike&#8209;Benard</h1>
+        <p className="hand" style={{ marginTop: 8 }}>
+          building things from first principles
+        </p>
+        <p className="muted" style={{ marginTop: 6, fontSize: 14 }}>
+          Lagos, Nigeria · updated November 2026
+        </p>
+      </header>
+
+      <div className="lead" style={{ marginTop: 28 }}>
         <p>I&apos;m interested in building things and understanding how they work.</p>
         <p>
           My background is in physics, which trained me to think about systems
           from first principles. Most of my work now sits somewhere between
-          engineering, design, and product building. I like creating tools and
-          software that are simple, useful, and thoughtfully engineered.
+          engineering, design, and product &mdash; I like making tools that are
+          simple, useful, and thoughtfully engineered.
         </p>
         <p>
-          I&apos;m especially drawn to the process of turning ideas into real things.
-          Sometimes that means writing code, sometimes designing interfaces, and
-          sometimes experimenting with strange technical ideas just to see what
-          happens.
+          I&apos;m drawn to turning ideas into real things. Sometimes that means
+          writing code, sometimes designing interfaces, and sometimes chasing a
+          strange technical idea just to see what happens. Most of what I ship is
+          small and specific rather than big and general.
         </p>
         <p>
-          Right now I&apos;m focused on building tools that reduce friction — things
-          that feel obvious in hindsight but didn&apos;t exist yet. Most of what I
-          ship is small and specific rather than big and general.
+          Outside of building, I read widely &mdash; science, technology,
+          philosophy, the occasional obscure rabbit hole. Big football, Sudoku,
+          mental-maths and stoicism guy, for what it&apos;s worth.
         </p>
         <p>
-          This site is a place where I collect some of the things I&apos;ve worked
-          on and some of the things I&apos;ve been thinking about.
+          You can find me on{" "}
+          <Link href="https://x.com/boihendo" target="_blank" rel="noopener noreferrer">
+            X
+          </Link>{" "}
+          and{" "}
+          <Link href="https://github.com/Hendo10X" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </Link>
+          , or reach me via{" "}
+          <Link href="mailto:hendersondike@gmail.com">email</Link>.
         </p>
       </div>
 
-      <div className="mt-10">
-        <h2 className="font-dm-sans font-bold text-sm text-foreground mb-3">
-          INTERESTS
-        </h2>
-        <div className="flex flex-col gap-4 text-muted-foreground dark:text-foreground font-karla text-sm leading-relaxed">
-          <p>
-            Outside of building products, I spend a lot of time reading. My
-            interests drift between science, technology, philosophy, and the
-            occasional obscure subject that seems interesting enough to chase
-            for a while.
-          </p>
-          <p>
-            In my spare time, I enjoy finding new music and scrolling through
-            Pinterest for inspiration across photography, design, urban art, and
-            cats. I&apos;m also a huge fan of football, Sudoku, mental maths,
-            and talking about philosophy — big stoicism guy, for what it&apos;s
-            worth.
-          </p>
-          <p>
-            You can find me on{" "}
-            <Link
-              href="https://x.com/boihendo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
-              X
-            </Link>
-            ,{" "}
-            <Link
-              href="https://github.com/Hendo10X"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
-              GitHub
-            </Link>
-            , or reach me via{" "}
-            <Link
-              href="mailto:hendersondike@gmail.com"
-              className="text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors">
-              email
-            </Link>
-            .
-          </p>
+      <section className="section">
+        <p className="section-label">
+          Building
+          <Circled>right now</Circled>
+        </p>
+        <div className="works">
+          {building.map((b) => (
+            <div className="work" key={b.name}>
+              <div className="work-head">
+                <Link href="/works" className="work-name">
+                  {b.name}
+                </Link>
+              </div>
+              <p className="work-desc">{b.note}</p>
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
+        <p style={{ marginTop: 16, fontSize: 14 }}>
+          <Link href="/works" className="muted" style={{ textDecoration: "none" }}>
+            All works &rarr;
+          </Link>
+        </p>
+      </section>
+
+      <section className="section">
+        <p className="section-label">Writing</p>
+        <ul className="index">
+          {posts.map((post, i) => (
+            <li key={post.slug}>
+              <span className="yr">{post.date ? new Date(post.date).getFullYear() : ""}</span>
+              <span className="title-row">
+                <Link href={`/posts/${post.slug}`} className="title">
+                  {post.title}
+                </Link>
+                {i === 0 && <Circled>new</Circled>}
+              </span>
+              <span className="date">{ddmm(post.date)}</span>
+            </li>
+          ))}
+        </ul>
+        <p style={{ marginTop: 16, fontSize: 14 }}>
+          <Link href="/posts" className="muted" style={{ textDecoration: "none" }}>
+            All writing &rarr;
+          </Link>
+        </p>
+      </section>
+    </>
   );
 }

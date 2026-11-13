@@ -1,185 +1,188 @@
 import Link from "next/link";
+import Circled from "../components/circled";
 
-const projects = [
-    {
-        name: "MITHRIL",
+type Project = {
+  name: string;
+  description: string;
+  url: string | null;
+  wip?: boolean;
+};
+
+const groups: { label: string; items: Project[] }[] = [
+  {
+    label: "Tools & infrastructure",
+    items: [
+      {
+        name: "Mithril",
         description:
-            "Mithril is the plumbing layer that every Nigerian fintech plugs into, so they never have to think about which bank provider to use, what happens when one breaks, or how to translate between all of them.",
+          "The payments plumbing every Nigerian fintech plugs into — one interface over every bank provider.",
         url: null,
-        status: "WIP",
-    },
-    {
-        name: "CROWDLINE",
-        description:
-            "Crowdline turns prediction market data into embeddable widgets that publishers drop into their articles — so readers see what thousands of people are actually betting on, right next to the story they're already reading.",
-        url: "https://crowdline-iota.vercel.app/",
-        status: null,
-    },
-    {
-        name: "AIRBAG",
-        description:
-            'Airbag is an "Execution Orchestration Layer" for JavaScript/TypeScript. It replaces manual try/catch/finally blocks with a declarative wrapper. It handles the lifecycle of any asynchronous function: Loading state, Error catching, Success feedback, Retries, and Timeouts.',
-        url: "https://airbag-sigma.vercel.app/",
-        status: null,
-    },
-    {
-        name: "SKRIP",
-        description:
-            "Skrip is a lightweight headless CMS that uses plain markdown files as structured content. Drop files in a folder, get a clean JSON API back. No database, no dashboard.",
-        url: "https://www.skrip.space",
-        status: null,
-    },
-    {
-        name: "TENTO",
-        description:
-            "Tento is a personal taste profile where you rank your top 10 of anything and share it with the world",
-        url: "https://tento-one.vercel.app/",
-        status: null,
-    },
-    {
-        name: "DISPOCHAT",
-        description:
-            "DispoChat is a disposable chat app where you share a 6-letter room code with a friend and have 5 minutes to talk before the conversation self-destructs permanently. No accounts, no logs, no trace — when the timer dies, it never happened.",
-        url: "https://dispochat.vercel.app/",
-        status: null,
-    },
-    {
-        name: "ZIPDROP",
-        description:
-            "ZipDrop is a smart digital utility designed to end the frustration of hunting for elusive postal codes and messy address formats.",
-        url: "https://zipdrop-app.vercel.app/",
-        status: null,
-    },
-    {
-        name: "NUEL",
-        description:
-            "Nuel is a simple artist portfolio I built as a mock for one of my classmates from secondary school. I used it as a playground to explore animations — blur effects, carousel loops, page transitions, and Combo usage.",
-        url: "https://nuel-alpha.vercel.app/",
-        status: null,
-    },
-    {
-        name: "NEPAWATCH",
-        description:
-            "Nepawatch is a real-time power outage tracking app for Nigerian communities. It lets anyone instantly check whether their area currently has electricity — no sign-up, no WhatsApp group to join, no asking around.",
-        url: "https://nepawatch-five.vercel.app",
-        status: null,
-    },
-    {
-        name: "TEENAGEHEADS",
-        description:
-            "Teenageheads is a project heavily inspired by the Teen Titans — the looks, the characters, the energy. A love letter to that era of design.",
-        url: "https://teenageheads.vercel.app/",
-        status: null,
-    },
-    {
-        name: "QUIST",
-        description: "The search engine for AI-solved problems.",
-        url: "https://quist-web.vercel.app/",
-        status: null,
-    },
-    {
-        name: "GHOSTKI",
-        description:
-            "Ghostki is a lightning-fast, offline terminal tool that instantly generates secure burner crypto wallets and automatically injects them directly into your project's .env files for seamless local testing. Generate new key Run in the terminal.",
-        url: "https://github.com/Hendo10X/ghostki",
-        status: null,
-    },
-    {
-        name: "MORPHBADGES",
-        description:
-            "Morphbadges is a dynamic state-based UI component system where a single badge smoothly transforms into different states.",
-        url: "hhttps://morphbadges-landing.vercel.app/",
-        status: null,
-    },
-    {
-        name: "NANOGO",
-        description:
-            "A lightweight Go web framework built from scratch with support for routing, middleware, JSON handling, and extension points.",
-        url: "https://github.com/Hendo10X/nanogo",
-        status: null,
-    },
-    {
-        name: "KAI",
+        wip: true,
+      },
+      {
+        name: "Recurr",
+        description: "Developer-first subscription billing for the crypto economy.",
+        url: "https://github.com/Hendo10X/recurr",
+        wip: true,
+      },
+      {
+        name: "Kai",
         description: "Local-first, voice-powered desktop automation.",
         url: "https://github.com/Hendo10X/kai",
-        status: " WIP",
-    },
-    {
-        name: "RECURR",
+        wip: true,
+      },
+      {
+        name: "Pocketstrip",
         description:
-            "Recurr is a developer-first subscription billing infrastructure for the crypto economy.",
-        url: "https://github.com/Hendo10X/recurr",
-        status: "WIP",
-    },
-    {
-        name: "NOCKI",
+          "Drop-in billing for SaaS — subscriptions and recurring payments with minimal setup.",
+        url: "https://github.com/Hendo10X/pocketstrip",
+      },
+      {
+        name: "Skrip",
         description:
-            "Nocki is a CLI tool and process orchestrator purpose-built for local development.",
+          "A headless CMS made of plain markdown files — drop them in a folder, get a JSON API back.",
+        url: "https://www.skrip.space",
+      },
+      {
+        name: "Airbag",
+        description:
+          "An execution-orchestration layer for JS/TS: replaces try/catch/finally with one declarative wrapper.",
+        url: "https://airbag-sigma.vercel.app/",
+      },
+      {
+        name: "Nanogo",
+        description:
+          "A lightweight Go web framework built from scratch — routing, middleware, JSON, extension points.",
+        url: "https://github.com/Hendo10X/nanogo",
+      },
+      {
+        name: "Nocki",
+        description: "A CLI process orchestrator purpose-built for local development.",
         url: "https://github.com/Hendo10X/nocki",
-        status: null,
-    },
-    {
-        name: "FLAPSTACK",
-        description: "A pastebin alternative with AI features.",
-        url: "https://github.com/Hendo10X/flapstack",
-        status: null,
-    },
-    {
-        name: "BITSTALL",
+      },
+      {
+        name: "Ghostki",
+        description:
+          "An offline CLI that mints burner crypto wallets and injects them straight into your .env.",
+        url: "https://github.com/Hendo10X/ghostki",
+      },
+      {
+        name: "Morphbadges",
+        description:
+          "A state-based UI component system where one badge animates between its states.",
+        url: "https://morphbadges-landing.vercel.app/",
+      },
+    ],
+  },
+  {
+    label: "Apps & products",
+    items: [
+      {
+        name: "Crowdline",
+        description:
+          "Embeddable widgets that put live prediction-market data right next to a publisher's story.",
+        url: "https://crowdline-iota.vercel.app/",
+      },
+      {
+        name: "Quist",
+        description: "A search engine for AI-solved problems.",
+        url: "https://quist-web.vercel.app/",
+      },
+      {
+        name: "Nepawatch",
+        description:
+          "Real-time power-outage tracking for Nigerian communities — no sign-up, no WhatsApp group.",
+        url: "https://nepawatch-five.vercel.app",
+      },
+      {
+        name: "Dispochat",
+        description:
+          "Disposable chat rooms that self-destruct after five minutes. No accounts, no logs, no trace.",
+        url: "https://dispochat.vercel.app/",
+      },
+      {
+        name: "Tento",
+        description: "A personal taste profile — rank your top 10 of anything and share it.",
+        url: "https://tento-one.vercel.app/",
+      },
+      {
+        name: "Zipdrop",
+        description:
+          "A utility that ends the hunt for postal codes and messy address formats.",
+        url: "https://zipdrop-app.vercel.app/",
+      },
+      {
+        name: "Bitstall",
         description: "A decentralized, local-first marketplace for Bitchat.",
         url: "https://github.com/Hendo10X/bitstall",
-        status: null,
-    },
-    {
-        name: "POCKETSTRIP",
+      },
+      {
+        name: "Flapstack",
+        description: "A pastebin alternative with AI features.",
+        url: "https://github.com/Hendo10X/flapstack",
+      },
+      {
+        name: "Flipghost",
         description:
-            "Pocketstrip is an opinionated billing platform that helps developers add subscriptions and recurring payments to their saas products with minimal setup.",
-        url: "https://github.com/Hendo10X/pocketstrip",
-        status: null,
-    },
-    {
-        name: "FLIPGHOST",
-        description:
-            "a web app where artists and animators draw frame-by-frame animations directly in their browser, like a digital flipbook. It features a simple timeline, onion skinning, and export to GIF or video.",
+          "Draw frame-by-frame animations in the browser — a digital flipbook with onion-skinning and GIF export.",
         url: "https://github.com/Hendo10X/flipghost",
-        status: null,
-    },
+      },
+    ],
+  },
+  {
+    label: "Design & play",
+    items: [
+      {
+        name: "Nuel",
+        description:
+          "An artist portfolio I used as a playground for animation — blur, carousels, page transitions.",
+        url: "https://nuel-alpha.vercel.app/",
+      },
+      {
+        name: "Teenageheads",
+        description: "A love letter to the Teen Titans era of design.",
+        url: "https://teenageheads.vercel.app/",
+      },
+    ],
+  },
 ];
 
 export default function WorksPage() {
-    return (
-        <div className="max-w-prose">
-            <h1 className="text-2xl font-bold font-dm-sans mb-8">Works</h1>
-            <div className="flex flex-col gap-8">
-                {projects.map((project) => (
-                    <div key={project.name}>
-                        <div className="flex flex-row items-center gap-2 mb-2">
-                            {project.url ? (
-                                <Link
-                                    href={project.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="font-dm-sans font-bold text-sm text-foreground hover:underline underline-offset-4"
-                                >
-                                    {project.name}
-                                </Link>
-                            ) : (
-                                <span className="font-dm-sans font-bold text-sm text-foreground">
-                                    {project.name}
-                                </span>
-                            )}
-                            {project.status === "WIP" && (
-                                <span className="text-xs border border-pink-500 text-pink-500 px-2 py-0.5 rounded-full">
-                                    WIP
-                                </span>
-                            )}
-                        </div>
-                        <p className="font-karla text-sm text-muted-foreground dark:text-foreground leading-relaxed">
-                            {project.description}
-                        </p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <>
+      <header>
+        <h1>Works</h1>
+        <p className="muted" style={{ marginTop: 6, fontSize: 14 }}>
+          Things I&apos;ve built, shipped, or am still tinkering with.
+        </p>
+      </header>
+
+      {groups.map((group) => (
+        <section className="section" key={group.label}>
+          <p className="section-label">{group.label}</p>
+          <div className="works">
+            {group.items.map((p) => (
+              <div className="work" key={p.name}>
+                <div className="work-head">
+                  {p.url ? (
+                    <Link
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-name">
+                      {p.name}
+                    </Link>
+                  ) : (
+                    <span className="work-name">{p.name}</span>
+                  )}
+                  {p.wip && <Circled>wip</Circled>}
+                </div>
+                <p className="work-desc">{p.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  );
 }

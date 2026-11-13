@@ -1,5 +1,6 @@
 import { getPost } from "@/lib/markdown";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 interface PostPageProps {
   params: Promise<{
@@ -16,22 +17,27 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <div className="max-w-prose">
-      <article>
-        <header className="mb-8">
-          <h1 className="text-2xl font-bold mb-3 font-dm-sans text-foreground">
-            {post.title}
-          </h1>
-          {post.date && (
-            <p className="text-muted-foreground text-sm font-karla">{post.date}</p>
-          )}
-        </header>
+    <article>
+      <p style={{ marginBottom: 28, fontSize: 14 }}>
+        <Link href="/posts" className="muted" style={{ textDecoration: "none" }}>
+          &larr; Writing
+        </Link>
+      </p>
 
-        <div
-          className="prose font-karla font-light leading-relaxed text-sm overflow-visible"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </article>
-    </div>
+      <header className="article-head">
+        <h1>{post.title}</h1>
+        {post.date && (
+          <p className="meta">
+            {post.date}
+            {post.readingTime ? ` · ${post.readingTime}` : ""}
+          </p>
+        )}
+      </header>
+
+      <div
+        className="prose"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
+    </article>
   );
 }

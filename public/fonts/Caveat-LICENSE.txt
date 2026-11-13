@@ -1,0 +1,5 @@
+Caveat
+Copyright 2014 The Caveat Project Authors (https://github.com/googlefonts/caveat)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+The full license text is in OFL.txt in this folder and at https://openfontlicense.org

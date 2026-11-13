@@ -1,34 +1,60 @@
 import { getAllPosts } from "@/lib/markdown";
 import Link from "next/link";
+import Circled from "../components/circled";
+
+function ddmm(date?: string) {
+  if (!date) return "";
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return "";
+  return `${String(d.getDate()).padStart(2, "0")}/${String(
+    d.getMonth() + 1
+  ).padStart(2, "0")}`;
+}
+
+function year(date?: string) {
+  if (!date) return "";
+  const d = new Date(date);
+  return isNaN(d.getTime()) ? "" : String(d.getFullYear());
+}
 
 export default function PostsPage() {
   const posts = getAllPosts();
+  let lastYear = "";
 
   return (
-    <div className="max-w-prose">
-      <h1 className="text-2xl font-bold mb-6 font-dm-sans">Blog</h1>
-      <div className="divide-y divide-border">
+    <>
+      <header>
+        <h1>Writing</h1>
+        <p className="muted" style={{ marginTop: 6, fontSize: 14 }}>
+          Notes on building, design, and ideas worth chasing.
+        </p>
+      </header>
+
+      <div className="section">
         {posts.length === 0 ? (
-          <p className="text-muted-foreground font-karla text-sm">No posts yet.</p>
+          <p className="muted">No posts yet.</p>
         ) : (
-          posts.map((post) => (
-            <article key={post.slug} className="py-3">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <Link
-                  href={`/posts/${post.slug}`}
-                  className="text-sm font-karla transition-colors hover:text-muted-foreground">
-                  {post.title}
-                </Link>
-                {post.date && (
-                  <span className="text-muted-foreground text-xs font-karla whitespace-nowrap">
-                    {post.date}
+          <ul className="index">
+            {posts.map((post, i) => {
+              const y = year(post.date);
+              const showYear = y !== lastYear;
+              lastYear = y;
+              return (
+                <li key={post.slug}>
+                  <span className="yr">{showYear ? y : ""}</span>
+                  <span className="title-row">
+                    <Link href={`/posts/${post.slug}`} className="title">
+                      {post.title}
+                    </Link>
+                    {i === 0 && <Circled>new</Circled>}
                   </span>
-                )}
-              </div>
-            </article>
-          ))
+                  <span className="date">{ddmm(post.date)}</span>
+                </li>
+              );
+            })}
+          </ul>
         )}
       </div>
-    </div>
+    </>
   );
 }
